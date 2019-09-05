@@ -1,0 +1,33 @@
+@import "../../../scss/variables";
+
+article {
+  margin-top: 30px;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+section {
+  .container {
+    .row {
+      mat-list {
+        ::ng-deep {
+          mat-list-item {
+            ::ng-deep {
+              div.mat-list-item-content {
+                padding: 0;
+
+                p {
+                  color: $black;
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

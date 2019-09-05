@@ -1,0 +1,81 @@
+@import "../../../scss/variables";
+:host{
+  display: block;
+  background: $white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+header{
+   padding: 10px 0;
+  .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    nav{
+      display: flex;
+      align-items: center;
+      .logo{
+        display: block;
+        width: 160px;
+        margin-right: 60px;
+        @media all and (max-width: 991px) {
+          margin-right: 15px;
+          width: 120px;
+        }
+        img{
+          width: 100%;
+        }
+      }
+      a.link{
+        @media all and (max-width: 991px) {
+          padding: 0 10px;
+        }
+      }
+    }
+    .connect-block{
+      display: flex;
+      align-items: center;
+      height: 89px;
+      @media all and (max-width: 768px) {
+        height: 67.75px;
+      }
+      a{
+        height: 60px;
+        display: flex;
+        align-items: center;
+        width: 180px;
+        color: $white;
+        justify-content: center;
+        border-radius: 50px;
+        @media all and (max-width: 768px) {
+          height: auto;
+          padding: 8px 15px;
+          font-size: 0;
+          border-radius: 0;
+          color: $black;
+          background: transparent !important;
+          width: auto;
+        }
+        mat-icon{
+          margin-right: 10px;
+          @media all and (max-width: 768px) {
+            margin-right: 0;
+          }
+        }
+        &:first-child{
+          margin-right: 15px;
+          background: $black;
+          @media all and (max-width: 768px) {
+            margin-right: 0;
+          }
+        }
+        &:last-child{
+          background: $black;
+        }
+      }
+    }
+  }
+
+
+}

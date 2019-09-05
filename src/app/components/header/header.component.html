@@ -1,0 +1,16 @@
+ <header>
+   <div class="container">
+     <nav>
+       <a routerLink="/home" routerLinkActive="active" class="logo"><img src="../../../assets/images/logo.svg" alt="Logo"></a>
+       <a mat-button routerLink="/articles" routerLinkActive="active"><span class="fa fa-home fa-lg"></span>Статті</a>
+       <a mat-button routerLink="/news" routerLinkActive="active"><span class="fa fa-home fa-lg"></span>Новини</a>
+       <a mat-button routerLink="/cakes" routerLinkActive="active"><span class="fa fa-home fa-lg"></span>Кексики</a>
+     </nav>
+     <div class="connect-block">
+<!--       Hidden Contact Form Temporary -->
+<!--       <a mat-button (click)="openContactForm()"><mat-icon>message</mat-icon>Звязатися з нами</a>-->
+       <a mat-button (click)="logIn()"><mat-icon>input</mat-icon>Увійти</a>
+     </div>
+   </div>
+ </header>
+

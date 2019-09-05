@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+///* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
+@import "scss/mixin";
+@import "scss/variables";
+@import "scss/typography";
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: #f8faff !important;
+  font-size: 16px;
+}
+section {
+  padding-top: 30px;
+}
+
+mat-card-header, article, mat-card, a, button {
+  &:hover, &:focus, &:visited, &:active {
+    outline: none !important;
+  }
+}
+.mat-spinner{
+  height: calc(100vh - 109px);
+  mat-spinner{
+    left: 50%;
+    top: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+  }
+}
+.container {
+  @media all and (max-width: 1200px) {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-dialog-container {
+  overflow: hidden !important;
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+

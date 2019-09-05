@@ -1,0 +1,20 @@
+<form novalidate [formGroup]="formGroupSignIn" (ngSubmit)="onSubmit(true, formGroupSignIn.value)">
+  <mat-form-field>
+    <input matInput formControlName="email" placeholder="Електронна Пошта" required>
+    <mat-error *ngIf="!formGroupSignIn.controls['email'].valid && formGroupSignIn.controls['email'].touched">
+      {{ getErrorEmail() }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Пароль" formControlName="password" [type]="hide ? 'password' : 'text'" required>
+    <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </a>
+    <mat-error *ngIf="!formGroupSignIn.controls['password'].valid && formGroupSignIn.controls['password'].touched">
+      {{ getErrorPassword() }}
+    </mat-error>
+  </mat-form-field>
+  <mat-dialog-actions>
+    <button [disabled]="!formGroupSignIn.valid" type="submit" class="btn-submit">Увійти</button>
+  </mat-dialog-actions>
+</form>

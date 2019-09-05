@@ -1,0 +1,29 @@
+article{
+  margin-top: 30px;
+  mat-card{
+    cursor: pointer;
+    transition: all ease 0.3s;
+    &:hover{
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+    }
+    ::ng-deep{
+      .banner{
+        max-height: 260px;
+        height: 260px;
+        object-fit: cover;
+        object-position: center;
+      }
+      .article-information{
+        display: flex;
+        justify-content: space-between;
+        span{
+          font-size: 12px;
+          &:first-child{
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+}
+

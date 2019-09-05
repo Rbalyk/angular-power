@@ -1,0 +1,16 @@
+form{
+  display: flex;
+  flex-direction: column;
+  mat-dialog-actions{
+    margin-bottom: 0;
+    min-height: inherit;
+    padding-bottom: 0;
+  }
+  .btn-submit{
+    margin-top: 45px;
+  }
+  mat-hint,mat-error{
+    margin-top: 5px;
+    padding-left: 15px;
+  }
+}

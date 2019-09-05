@@ -1,0 +1,139 @@
+@import "variables";
+@mixin dialog(){
+  :host{
+    display: block;
+    position: relative;
+    padding: 15px;
+  }
+  .close{
+    position: absolute;
+    right: -10px;
+    top:-10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+@mixin form() {
+  form{
+    mat-form-field{
+      mat-error{
+        padding-left: 15px;
+      }
+      ::ng-deep{
+        input,textarea{
+          width: 100%;
+          border: 1px solid #ebebeb;
+          background: $white;
+          border-radius: 50px;
+          font-family: "Futura", sans-serif;
+          font-size: 16px;
+          margin-bottom: 0;
+          &:focus{
+            outline: none;
+          }
+        }
+        input{
+          height: 48px;
+          padding: 0 25px;
+        }
+        textarea{
+          height: 200px;
+          padding: 25px;
+          resize: none;
+        }
+        .mat-form-field-underline{
+          display: none;
+        }
+        .mat-form-field-infix{
+          width: auto;
+          padding: 1px 0 0 0;
+          margin: 0;
+          border: 0;
+          .mat-form-field-label-wrapper{
+            display: block !important;
+            padding: 0;
+            width: 100%;
+            font-size: 16px;
+            overflow: inherit;
+            position: absolute;
+            top: -12px;
+            left: 0;
+            height: 18px;
+            transform: none !important;
+            label{
+              position: relative;
+              top: inherit;
+              transform: none !important;
+              padding-left: 15px;
+            }
+          }
+        }
+        .mat-form-field-suffix{
+          position: absolute;
+          right: 1px;
+          background: $white;
+          border-radius: 50%;
+          top: 36px;
+          a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px !important;
+          }
+        }
+        .mat-form-field-wrapper{
+          padding: 35px 0 15px 0;
+          margin-bottom:0;
+        }
+      }
+
+
+    }
+
+    mat-checkbox{
+      margin-top: 20px;
+      margin-bottom: 15px;
+      padding-left: 12px;
+    }
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+      background-color: $black;
+    }
+    .mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+      background: $black;
+    }
+    mat-dialog-actions{
+      margin-bottom: 0;
+      padding: 0;
+      ::ng-deep{
+        button.btn-submit{
+          background: $black;
+          padding: 17px 32px;
+          border: none;
+          color: $white;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 16px;
+          border-radius: 50px;
+          font-family: "Futura", sans-serif;
+          min-width: 100%;
+          text-align: center;
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+          transition:  all 0.4s ease-in-out;
+          &:hover{
+            outline: none;
+            border-radius: 0;
+          }
+          &:focus{
+            outline: none;
+          }
+          &:disabled{
+            opacity: 0.7;
+          }
+        }
+
+      }
+    }
+  }
+}

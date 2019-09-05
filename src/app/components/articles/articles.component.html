@@ -1,0 +1,31 @@
+<section class="articles-section" *ngIf="articles">
+  <div class="container">
+    <div class="row">
+      <article class="col-lg-6" *ngFor="let article of articles">
+        <mat-card class="example-card">
+          <mat-card-header [routerLink]="['/articledetail', article.id ]">
+            <img src="{{article.categoryImageUrl}}" mat-card-avatar alt="{{article.authorName}}">
+            <mat-card-title>{{article.title}}</mat-card-title>
+            <mat-card-subtitle>{{article.categoryName}}</mat-card-subtitle>
+          </mat-card-header>
+          <img class="banner" mat-card-image src="{{article.imageUrl}}" alt="{{article.title}}"
+               [routerLink]="['/articledetail', article.id ]">
+          <mat-card-content>
+            <p [routerLink]="['/articledetail', article.id ]">
+              {{article.postText | slice:0:150}}...
+            </p>
+            <div class="article-information">
+              <span>{{article.authorName | titlecase}}</span>
+              <span>{{article.date | date}}</span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </article>
+    </div>
+  </div>
+
+</section>
+
+<div class="mat-spinner" [hidden]="articles">
+  <mat-spinner></mat-spinner>
+</div>

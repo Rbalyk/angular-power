@@ -1,0 +1,9 @@
+<mat-tab-group [@.disabled]="true">
+  <mat-tab label="Авторизація">
+    <app-sign-up (onSubmitted)="onSubmit()"></app-sign-up>
+  </mat-tab>
+  <mat-tab label="Увійти">
+    <app-sign-in (onSubmitted)="onSubmit()"></app-sign-in>
+  </mat-tab>
+</mat-tab-group>
+<mat-icon class="close" mat-dialog-close>close</mat-icon>

@@ -1,0 +1,33 @@
+@import "../../../scss/mixin";
+
+@include form();
+.search-section {
+  height: calc(100vh - 110px);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  form {
+    width: 40%;
+    h4{
+      margin-bottom: 15px;
+    }
+    mat-form-field {
+      width: 100%;
+
+      ::ng-deep {
+        .mat-form-field-wrapper {
+          padding: 0;
+
+          input {
+            border: 1px solid $primary-text-color;
+          }
+        }
+      }
+
+    }
+  }
+
+
+}
