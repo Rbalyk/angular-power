@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Article } from "../shared/article";
-import { ARTICLES } from "../shared/articles";
+import { Article } from '../shared/article';
+import { ARTICLES } from '../shared/articles';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +11,15 @@ export class ArticlesService {
 
   constructor() { }
 
-  getArticles(): Promise<Article[]> {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(ARTICLES), 1200);
-    });
+  getArticles(): Observable<Article[]> {
+    return of(ARTICLES).pipe(delay(1200));
   }
-  getArticle(id: string): Promise<Article> {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(ARTICLES.filter((article) =>(article.id === id))[0]), 1200);
-    });
+  getArticle(id: string): Observable<Article> {
+    return of(ARTICLES.filter((article) => (article.id === id))[0]).pipe(delay(1000));
   }
+
+  getArticleId(): Observable<string[] | any> {
+    return of(ARTICLES.map(dish => dish.id));
+  }
+
 }

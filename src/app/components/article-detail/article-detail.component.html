@@ -1,28 +1,73 @@
-<section class="articles-section" *ngIf="article" >
+<section class="articles-section" *ngIf="article">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 d-flex justify-content-between align-items-center">
-        <button mat-button  (click)="goBack()">ПОВЕРНУТИСЯ</button>
-        <span> {{article.date | date }}</span>
+        <button mat-button (click)="goBack()">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+          {{'повернутися' | uppercase}}
+        </button>
+        <span class="d-flex align-items-center">{{'Дата публікації'}}: {{article.date | date: 'M/d/yyyy' }}</span>
       </div>
       <article class="col-lg-12">
-
         <h1>{{article.title}}</h1>
-        <p>
-          {{article.postText}}
-        </p>
+        <p>{{article.postText}}</p>
       </article>
+      <div class="article-navigation col-lg-12 d-flex justify-content-between align-items-center">
+        <button mat-button [routerLink]="['/articledetail', prev]">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+          {{'попередня стаття' | uppercase}}
+        </button>
+        <button mat-button [routerLink]="['/articledetail', next]">
+          {{'наступна стаття' | uppercase}}
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
+      <div class="col-lg-12">
+        <h3 matLine>{{'Залишити коментар'}}:</h3>
+        <form novalidate [formGroup]="commentForm" #commForm="ngForm" (ngSubmit)="onSubmit()">
+          <p>Ваша оцінка від 0 до 5:
+            <mat-slider
+              formControlName="rating"
+              class="example-margin"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [thumbLabel]="thumbLabel"
+              [tickInterval]="tickInterval"
+              [(ngModel)]="value">
+            </mat-slider>
+          </p>
+          <p>
+            <mat-form-field style="width: 100%;">
+              <input matInput formControlName="author" placeholder="Ваше Ім'я" type="text" required>
+              <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field style="width: 100%;">
+              <textarea matInput formControlName="comment" placeholder="Ваш Коментар" rows="6"></textarea>
+            </mat-form-field>
+          </p>
+
+          <button mat-button  type="submit" class="btn-submit"
+                  [disabled]="commentForm.invalid">{{'Залишити'}}</button>
+        </form>
+      </div>
       <mat-list class="col-lg-12">
-        <h2>Коментарі</h2>
+        <h3>Коментарі</h3>
         <mat-list-item *ngFor="let comment of article.comments">
           <p mat-line>{{comment.comment}}</p>
-          <p mat-line>
-            <span> {{comment.author}}</span>
-            <span> {{comment.date | date }}</span>
-          </p>
+          <div class="comment-information">
+            <p>
+              <span>{{'Автор'}}: {{comment.author}}</span><br>
+              <span>{{'Дата публікації'}}: {{comment.date | date:'M/d/yyyy' }}</span>
+            </p>
+            <p><b>{{'Оцінка'}}: {{comment.rating}}</b></p>
+          </div>
         </mat-list-item>
       </mat-list>
-      <p ></p>
+
+
     </div>
   </div>
 

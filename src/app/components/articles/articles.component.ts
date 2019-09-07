@@ -13,7 +13,7 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.articlesService.getArticles()
-      .then(articles => this.articles = articles);
+      .subscribe(articles => this.articles = articles);
   }
 
 }
