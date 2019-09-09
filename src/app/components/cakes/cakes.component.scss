@@ -1,0 +1,58 @@
+@import "../../../scss/mixin";
+
+@include form();
+.search-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  .mat-list{
+    height: 500px;
+    overflow: auto;
+    width: 100%;
+    margin-top: 30px;
+    padding: 30px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+  }
+  form {
+    min-width: 100%;
+    width: 100%;
+    h4{
+      margin-bottom: 10px;
+    }
+
+    mat-form-field {
+      width: 100%;
+      max-width:530px;
+      ::ng-deep {
+        .mat-form-field-wrapper {
+          padding: 0;
+        }
+        label.search-label{
+          position: relative;
+          .spinner{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 20px;
+            top: -17px;
+            mat-spinner{
+              width: 20px !important;
+              height: 20px !important;
+              ::ng-deep{
+                svg{
+                  width: 20px !important;
+                  height: 20px !important;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+}

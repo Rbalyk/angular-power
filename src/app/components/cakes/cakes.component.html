@@ -1,1 +1,21 @@
-<p>cakes works!</p>
+<section class="search-section">
+  <form>
+    <h4>Більше ніж 3000 javascript/css плагінів в CDN:</h4>
+    <mat-form-field>
+      <label class="search-label" for="search">
+        <input matInput id='search' type="search"
+               class="form-control"
+               [formControl]="searchField">
+        <span class='spinner' *ngIf="loading"><mat-spinner></mat-spinner></span>
+      </label>
+    </mat-form-field>
+  </form>
+   <mat-list *ngIf="searchResult.length > 1">
+     <mat-list-item  *ngFor="let result of searchResult">
+       <p matLine>{{result.name}}</p>
+       <a matLine target="_blank" href="{{result.latest}}">{{result.latest}}</a>
+     </mat-list-item>
+   </mat-list>
+</section>
+
+
