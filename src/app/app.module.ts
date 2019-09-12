@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './shared/material.module';
 import { HttpClientModule} from '@angular/common/http';
 import { SearchService } from './services/search.service';
 import 'hammerjs';
@@ -21,6 +21,7 @@ import { CakesComponent } from './components/cakes/cakes.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { HomeComponent } from './components/home/home.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { SkillTestComponent } from './components/skill-test/skill-test.component';
 
 
 
@@ -36,7 +37,8 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     CakesComponent,
     ArticlesComponent,
     HomeComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    SkillTestComponent
   ],
   imports: [
     BrowserModule,
