@@ -1,15 +1,20 @@
 {
   "name": "angular-power",
   "version": "0.0.0",
+  "main": "server.js",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "dev": "nodemon server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "heroku-postbuild": "ng build --prod"
   },
+  "keywords": [
+    "json-server,heroku, node, REST API"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.0",
@@ -24,6 +29,7 @@
     "@angular/platform-browser-dynamic": "~8.0.1",
     "@angular/router": "~8.0.1",
     "@angular/cdk": "^8.1.2",
+    "json-server": "^0.12.1",
     "express": "^4.17.1",
     "path": "^0.12.7",
     "bootstrap": "^4.3.1",

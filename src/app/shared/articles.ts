@@ -36,7 +36,8 @@ export const ARTICLES: Article[] = [
         date: '2014-09-05T17:57:28.556094Z'
       }
     ]
-  }, {
+  },
+  {
     id: '1',
     title: 'Чому React.js?',
     imageUrl: '/assets/images/category/images/react.jpg',
@@ -71,7 +72,8 @@ export const ARTICLES: Article[] = [
         date: '2014-09-05T17:57:28.556094Z'
       }
     ]
-  }, {
+  },
+  {
     id: '3',
     title: 'Чому Vue.js?',
     imageUrl: '/assets/images/category/images/vue.jpeg',
@@ -106,7 +108,8 @@ export const ARTICLES: Article[] = [
         date: '2014-09-05T17:57:28.556094Z'
       }
     ]
-  }, {
+  },
+  {
     id: '4',
     title: 'Чому Node.js?',
     imageUrl: '/assets/images/category/images/nodejs.jpeg',
