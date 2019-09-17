@@ -8,7 +8,7 @@
             <mat-card-title>{{article.title}}</mat-card-title>
             <mat-card-subtitle>{{article.categoryName}}</mat-card-subtitle>
           </mat-card-header>
-          <img class="banner" mat-card-image src="{{article.imageUrl}}" alt="{{article.title}}"
+          <img class="banner" mat-card-image src="{{BaseURL + article.imageUrl}}" alt="{{article.title}}"
                [routerLink]="['/articledetail', article.id ]">
           <mat-card-content>
             <p [routerLink]="['/articledetail', article.id ]">
