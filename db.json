@@ -1,5 +1,5 @@
 {
-  "articles": [
+  "articlesDB": [
     {
       "id": "0",
       "title": "Чому Angular?",
