@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule} from '@angular/common/http';
 import { SearchService } from './services/search.service';
+import { baseURL } from './shared/baseurl';
 import 'hammerjs';
 
 
@@ -51,7 +52,9 @@ import { SkillTestComponent } from './components/skill-test/skill-test.component
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [SearchService],
+  providers: [
+    SearchService,
+    {provide: 'BaseURL', useValue: baseURL}],
   entryComponents: [
     ContactComponent,
     LoginComponent

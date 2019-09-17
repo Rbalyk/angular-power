@@ -4,7 +4,7 @@
       <article class="col-lg-6" *ngFor="let article of articles">
         <mat-card class="example-card">
           <mat-card-header [routerLink]="['/articledetail', article.id ]">
-            <img src="{{article.categoryImageUrl}}" mat-card-avatar alt="{{article.authorName}}">
+            <img src="{{BaseURL + article.categoryImageUrl}}" mat-card-avatar alt="{{article.authorName}}">
             <mat-card-title>{{article.title}}</mat-card-title>
             <mat-card-subtitle>{{article.categoryName}}</mat-card-subtitle>
           </mat-card-header>

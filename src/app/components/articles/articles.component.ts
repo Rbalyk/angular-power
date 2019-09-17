@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ArticlesService } from '../../services/articles.service';
 import { Article } from '../../shared/article';
 
@@ -9,7 +9,8 @@ import { Article } from '../../shared/article';
 })
 export class ArticlesComponent implements OnInit {
   articles: Article[];
-  constructor(public articlesService: ArticlesService) { }
+  constructor(public articlesService: ArticlesService,
+              @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
     this.articlesService.getArticles()

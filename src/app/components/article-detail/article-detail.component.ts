@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
 import {ArticlesService} from '../../services/articles.service';
@@ -6,18 +6,33 @@ import {Article} from '../../shared/article';
 import {switchMap} from 'rxjs/operators';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Comment} from '../../shared/comment';
+import {trigger, state, style, animate, transition} from '@angular/animations';
 
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
-  styleUrls: ['./article-detail.component.scss']
+  styleUrls: ['./article-detail.component.scss'],
+  animations: [
+    trigger('visibility', [
+      state('shown', style({
+        transform: 'scale(1.0)',
+        opacity: 1
+      })),
+      state('hidden', style({
+        transform: 'scale(0.5)',
+        opacity: 0
+      })),
+      transition('* => *', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 export class ArticleDetailComponent implements OnInit {
   article: Article;
   articleId: string[];
   prev: string;
   next: string;
-  comment: Comment[];
+  comment: Comment;
+  comments: Comment[];
   commentForm: FormGroup;
   date: string;
   autoTicks = false;
@@ -28,6 +43,8 @@ export class ArticleDetailComponent implements OnInit {
   thumbLabel = true;
   value = 5;
   tickIntervalNumber = 1;
+  articleCopy: Article;
+  visibility = 'shown';
 
   get tickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this.tickIntervalNumber) : 0;
@@ -53,19 +70,25 @@ export class ArticleDetailComponent implements OnInit {
   constructor(private articlesService: ArticlesService,
               private location: Location,
               private route: ActivatedRoute,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              @Inject('BaseURL') private BaseURL) {
     this.createForm();
   }
 
 
   ngOnInit() {
     const id = this.route.snapshot.params.id;
-    this.articlesService.getArticleId().subscribe(dishIds => this.articleId = dishIds);
-    this.route.params.pipe(switchMap((params: Params) => this.articlesService.getArticle(params.id)))
+    this.articlesService.getArticleId().subscribe(articleIds => this.articleId = articleIds);
+    this.route.params.pipe(switchMap((params: Params) => {
+      this.visibility = 'hidden';
+      return this.articlesService.getArticle(+params['id']);
+    }))
       .subscribe(article => {
         this.article = article;
+        this.articleCopy = article;
         this.setPrevNext(article.id);
-        this.comment = article.comments;
+        this.visibility = 'shown';
+        this.comments = article.comments;
       });
   }
 
@@ -89,9 +112,16 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   onSubmit() {
-    this.comment.unshift(this.commentForm.value);
-    this.commentForm.reset();
+    this.comment = (this.commentForm.value);
     this.commentForm.get('date').setValue(this.date);
+    this.articleCopy.comments.unshift(this.comment);
+    this.articlesService.putArticleComment(this.articleCopy)
+      .subscribe(article => {
+        this.article = article;
+        this.articleCopy = article;
+      });
+    this.commentForm.reset();
+
     alert('Дякую за Ваш коментар!!!');
   }
 
