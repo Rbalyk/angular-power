@@ -1,12 +1,10 @@
-const jsonServer = require('json-server');
-const server = jsonServer.create();
+const jsonServer = require('json-server').create().router('db.json');
 const express = require('express');
 const path = require('path');
-const router = jsonServer.router('db.json');
 const app = express();
 
 app.use(express.static(__dirname + '/dist/angular-power'));
-server.use(router);
+app.use(jsonServer);
 app.get('/*', function(req,res) {
 
   res.sendFile(path.join(__dirname+'/dist/angular-power/index.html'));
