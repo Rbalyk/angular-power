@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactComponent } from '../contact/contact.component';
-import { LoginComponent } from '../login/login.component';
+import { AuthenticationComponent } from '../authentication/authentication.component';
 import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
   mode = new FormControl('over');
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logIn() {
-    this.dialog.open(LoginComponent, {width: '500px', height: 'auto'});
+    this.dialog.open(AuthenticationComponent, {width: '500px', height: 'auto'});
   }
 
 }

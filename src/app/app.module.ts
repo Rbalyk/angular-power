@@ -13,10 +13,9 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignInComponent } from './components/login/sign-in/sign-in.component';
-import { SignUpComponent } from './components/login/sign-up/sign-up.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
 import { NewsComponent } from './components/news/news.component';
 import { CakesComponent } from './components/cakes/cakes.component';
 import { ArticlesComponent } from './components/articles/articles.component';
@@ -30,10 +29,9 @@ import { SkillTestComponent } from './components/skill-test/skill-test.component
   declarations: [
     AppComponent,
     HeaderComponent,
-    ContactComponent,
+    AuthenticationComponent,
     LoginComponent,
-    SignInComponent,
-    SignUpComponent,
+    RegisterComponent,
     NewsComponent,
     CakesComponent,
     ArticlesComponent,
@@ -56,8 +54,7 @@ import { SkillTestComponent } from './components/skill-test/skill-test.component
     SearchService,
     {provide: 'BaseURL', useValue: baseURL}],
   entryComponents: [
-    ContactComponent,
-    LoginComponent
+    AuthenticationComponent
   ],
   bootstrap: [AppComponent]
 })

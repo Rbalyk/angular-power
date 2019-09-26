@@ -1,92 +1,76 @@
 @import "variables";
-@mixin dialog(){
-  :host{
-    display: block;
-    position: relative;
-    padding: 15px;
-  }
-  .close{
-    position: absolute;
-    right: -10px;
-    top:-10px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-}
 @mixin form() {
   form{
     mat-form-field{
       mat-error{
         padding-left: 15px;
       }
-      ::ng-deep{
-        input,textarea{
+      input,textarea{
+        width: 100%;
+        border: 1px solid #ebebeb;
+        background: $white;
+        border-radius: 50px;
+        font-family: "Futura", sans-serif;
+        font-size: 16px;
+        margin-bottom: 0;
+        transition: all 0.4s ease;
+        &:focus{
+          outline: none;
+          box-shadow: 0 0 4px rgba(0,0,0,0.1);
+        }
+      }
+      input{
+        height: 48px;
+        padding: 0 25px;
+      }
+      textarea{
+        height: 200px;
+        padding: 25px;
+        resize: none;
+      }
+      .mat-form-field-underline{
+        display: none;
+      }
+      .mat-form-field-infix{
+        width: auto;
+        padding: 1px 0 0 0;
+        margin: 0;
+        border: 0;
+        .mat-form-field-label-wrapper{
+          display: block !important;
+          padding: 0;
           width: 100%;
-          border: 1px solid #ebebeb;
-          background: $white;
-          border-radius: 50px;
-          font-family: "Futura", sans-serif;
           font-size: 16px;
-          margin-bottom: 0;
-          transition: all 0.4s ease;
-          &:focus{
-            outline: none;
-            box-shadow: 0 0 4px rgba(0,0,0,0.1);
-          }
-        }
-        input{
-          height: 48px;
-          padding: 0 25px;
-        }
-        textarea{
-          height: 200px;
-          padding: 25px;
-          resize: none;
-        }
-        .mat-form-field-underline{
-          display: none;
-        }
-        .mat-form-field-infix{
-          width: auto;
-          padding: 1px 0 0 0;
-          margin: 0;
-          border: 0;
-          .mat-form-field-label-wrapper{
-            display: block !important;
-            padding: 0;
-            width: 100%;
-            font-size: 16px;
-            overflow: inherit;
-            position: absolute;
-            top: -12px;
-            left: 0;
-            height: 18px;
-            transform: none !important;
-            label{
-              position: relative;
-              top: inherit;
-              transform: none !important;
-              padding-left: 15px;
-            }
-          }
-        }
-        .mat-form-field-suffix{
+          overflow: inherit;
           position: absolute;
-          right: 1px;
-          background: $white;
-          border-radius: 50%;
-          top: 36px;
-          a{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px !important;
+          top: -12px;
+          left: 0;
+          height: 18px;
+          transform: none !important;
+          label{
+            position: relative;
+            top: inherit;
+            transform: none !important;
+            padding-left: 15px;
           }
         }
-        .mat-form-field-wrapper{
-          padding: 35px 0 15px 0;
-          margin-bottom:0;
+      }
+      .mat-form-field-suffix{
+        position: absolute;
+        right: 1px;
+        background: $white;
+        border-radius: 50%;
+        top: 36px;
+        a{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 30px !important;
         }
+      }
+      .mat-form-field-wrapper{
+        padding: 35px 0 15px 0;
+        margin-bottom:0;
       }
 
 
@@ -106,9 +90,7 @@
     mat-dialog-actions{
       margin-bottom: 0;
       padding: 0;
-      ::ng-deep{
-       @include btn-black();
-      }
+      @include btn-black();
     }
   }
 }

@@ -12,19 +12,26 @@ body {
   font-family: 'Open Sans', sans-serif;
   background: #f8faff !important;
   font-size: 16px;
+  overflow-x: hidden;
 }
+
 section {
-  padding-top: 30px;
+  padding: 15px 0;
 }
 
 mat-card-header, article, mat-card, a, button {
   &:hover, &:focus, &:visited, &:active {
     outline: none !important;
   }
+  .mat-form-field-label{
+    width: 100% !important;
+  }
 }
-.mat-spinner{
+
+.mat-spinner {
   height: calc(100vh - 109px);
-  mat-spinner{
+
+  mat-spinner {
     left: 50%;
     top: 50%;
     margin-top: -50px;
@@ -41,10 +48,12 @@ mat-card-header, article, mat-card, a, button {
 mat-form-field {
   width: 100%;
 }
-textarea{
+
+textarea {
   resize: none;
 }
-.mat-button-wrapper{
+
+.mat-button-wrapper {
   display: flex;
   align-items: center;
 }
@@ -66,6 +75,20 @@ mat-dialog-container {
   border: 1px solid $primary-color-dark;
   z-index: 1;
   transform: scale(1.01);
+}
+
+app-login,app-contact {
+  display: block;
+  position: relative;
+  padding: 15px;
+
+  .close {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
 }
 
 

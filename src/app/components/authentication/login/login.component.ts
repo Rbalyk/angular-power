@@ -1,18 +1,18 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { SignIn } from '../../../shared/signIn';
+import { User } from '../../../shared/user';
 
 @Component({
   selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
   }
   formGroupSignIn: FormGroup;
-  user: SignIn;
+  user: User;
   hide = true;
   titleAlert = 'Поле обовязкове';
 

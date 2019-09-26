@@ -1,18 +1,18 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {SignUp} from '../../../shared/signUp';
+import { User } from '../../../shared/user';
 
 @Component({
   selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onSubmitted = new EventEmitter<boolean>();
   formGroupSignUp: FormGroup;
-  user: SignUp;
+  user: User;
   hide = true;
   titleAlert = 'Поле обовязкове';
 

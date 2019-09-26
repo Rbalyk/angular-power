@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { FormControl } from '@angular/forms';
 import { EMPTY, Subscription } from 'rxjs';
@@ -7,7 +7,8 @@ import { catchError, distinctUntilChanged, switchMap, filter, debounceTime, tap 
 @Component({
   selector: 'app-cakes',
   templateUrl: './cakes.component.html',
-  styleUrls: ['./cakes.component.scss']
+  styleUrls: ['./cakes.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CakesComponent implements OnInit, OnDestroy {
   searchField: FormControl;

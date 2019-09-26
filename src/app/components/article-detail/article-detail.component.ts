@@ -1,17 +1,18 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
-import {Location} from '@angular/common';
-import {ArticlesService} from '../../services/articles.service';
-import {Article} from '../../shared/article';
-import {switchMap} from 'rxjs/operators';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Comment} from '../../shared/comment';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { ArticlesService } from '../../services/articles.service';
+import { Article } from '../../shared/article';
+import { switchMap } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Comment } from '../../shared/comment';
 import { visibility } from '../../animations/app.animation';
 
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
   styleUrls: ['./article-detail.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     visibility()
   ]

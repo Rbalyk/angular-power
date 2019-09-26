@@ -1,31 +1,33 @@
-<section class="articles-section" *ngIf="articles">
-  <div class="container">
-    <div class="row">
-      <article class="col-lg-12" *ngFor="let article of articles">
-        <mat-card class="example-card">
-          <mat-card-header [routerLink]="['/articledetail', article.id ]">
-            <img src="{{BaseURL + article.categoryImageUrl}}" mat-card-avatar alt="{{article.authorName}}">
-            <mat-card-title>{{article.title}}</mat-card-title>
-            <mat-card-subtitle>{{article.categoryName}}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p [routerLink]="['/articledetail', article.id ]">
-              {{article.postText | slice:0:150}}...
-            </p>
-            <div class="article-information">
-              <span>{{article.authorName | titlecase}}</span>
-              <span>{{article.date | date:'shortDate'}}</span>
-            </div>
-          </mat-card-content>
-          <img class="banner" mat-card-image src="{{BaseURL + article.imageUrl}}" alt="{{article.title}}"
-               [routerLink]="['/articledetail', article.id ]">
-        </mat-card>
-      </article>
-    </div>
+<div class="col-lg-12">
+  <section id="filter-category">
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip color="accent" (click)="filterByCategory(category.name)"
+                *ngFor="let category of categories">{{category.name}}</mat-chip>
+    </mat-chip-list>
+  </section>
+  <div class="mat-spinner" [hidden]="articles && loading">
+    <mat-spinner></mat-spinner>
   </div>
-
-</section>
-
-<div class="mat-spinner" [hidden]="articles">
-  <mat-spinner></mat-spinner>
+  <section class="articles-section" *ngIf="articles && loading">
+    <article *ngFor="let article of articles">
+      <mat-card class="example-card">
+        <mat-card-header [routerLink]="['/articledetail', article.id ]">
+          <img src="{{BaseURL + article.categoryImageUrl}}" mat-card-avatar alt="{{article.authorName}}">
+          <mat-card-title>{{article.title}}</mat-card-title>
+          <mat-card-subtitle>{{article.categoryName}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p [routerLink]="['/articledetail', article.id ]">
+            {{article.postText | slice:0:150}}...
+          </p>
+          <div class="article-information">
+            <span>{{article.authorName | titlecase}}</span>
+            <span>{{article.date | date:'shortDate'}}</span>
+          </div>
+        </mat-card-content>
+        <img class="banner" mat-card-image src="{{BaseURL + article.imageUrl}}" alt="{{article.title}}"
+             [routerLink]="['/articledetail', article.id ]">
+      </mat-card>
+    </article>
+  </section>
 </div>
