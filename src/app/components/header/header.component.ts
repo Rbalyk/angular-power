@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ContactComponent } from '../contact/contact.component';
 import { AuthenticationComponent } from '../authentication/authentication.component';
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +9,9 @@ import {FormControl} from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
-  mode = new FormControl('over');
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
-  }
-
-  openContactForm() {
-    this.dialog.open(ContactComponent);
   }
 
   logIn() {
