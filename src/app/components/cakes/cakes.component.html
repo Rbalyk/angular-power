@@ -11,7 +11,7 @@
       </label>
     </mat-form-field>
   </form>
-   <mat-list *ngIf="searchResult.length > 1">
+   <mat-list *ngIf="showSearchResult">
      <mat-list-item  *ngFor="let result of searchResult">
        <p matLine>{{result.name}}</p>
        <a matLine target="_blank" href="{{result.latest}}">{{result.latest}}</a>

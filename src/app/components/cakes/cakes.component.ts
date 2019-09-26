@@ -12,7 +12,7 @@ import { catchError, distinctUntilChanged, switchMap, filter, debounceTime, tap 
 export class CakesComponent implements OnInit, OnDestroy {
   searchField: FormControl;
   loading = false;
-  showSearchResult = true;
+  showSearchResult = false;
   searchResult: any[];
   private subscription: Subscription;
   constructor(public searchService: SearchService) { }
@@ -32,6 +32,9 @@ export class CakesComponent implements OnInit, OnDestroy {
       switchMap(text => this.searchService.search(text).pipe(
         catchError(err => EMPTY)
       )),
+      tap(() => {
+        this.showSearchResult = true;
+      }),
       tap(_ => (this.loading = false)),
     ).subscribe((data) => {
       this.searchResult = data['results'];

@@ -12,6 +12,8 @@ export class ArticlesService {
 
   constructor(private http: HttpClient) { }
 
+  categoryName: string;
+
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(baseURL + 'articles').pipe(delay(1000));
   }
@@ -24,6 +26,10 @@ export class ArticlesService {
     return this.getArticles().pipe(
       map(dishes => dishes.map(dish => dish.id)),
     );
+  }
+
+  getArticlesByCategory(categoryName: string): Observable<Article[]> {
+    return this.http.get<Article[]>(baseURL + 'articles/?categoryName=' + categoryName);
   }
 
   putArticleComment(article: Article): Observable<Article> {

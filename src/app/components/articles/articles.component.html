@@ -1,15 +1,13 @@
 <section class="articles-section" *ngIf="articles">
   <div class="container">
     <div class="row">
-      <article class="col-lg-6" *ngFor="let article of articles">
+      <article class="col-lg-12" *ngFor="let article of articles">
         <mat-card class="example-card">
           <mat-card-header [routerLink]="['/articledetail', article.id ]">
             <img src="{{BaseURL + article.categoryImageUrl}}" mat-card-avatar alt="{{article.authorName}}">
             <mat-card-title>{{article.title}}</mat-card-title>
             <mat-card-subtitle>{{article.categoryName}}</mat-card-subtitle>
           </mat-card-header>
-          <img class="banner" mat-card-image src="{{BaseURL + article.imageUrl}}" alt="{{article.title}}"
-               [routerLink]="['/articledetail', article.id ]">
           <mat-card-content>
             <p [routerLink]="['/articledetail', article.id ]">
               {{article.postText | slice:0:150}}...
@@ -19,6 +17,8 @@
               <span>{{article.date | date:'shortDate'}}</span>
             </div>
           </mat-card-content>
+          <img class="banner" mat-card-image src="{{BaseURL + article.imageUrl}}" alt="{{article.title}}"
+               [routerLink]="['/articledetail', article.id ]">
         </mat-card>
       </article>
     </div>

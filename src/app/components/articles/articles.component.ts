@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import { ArticlesService } from '../../services/articles.service';
 import { Article } from '../../shared/article';
+import {log} from "util";
 
 @Component({
   selector: 'app-articles',
@@ -8,6 +9,7 @@ import { Article } from '../../shared/article';
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
+
   articles: Article[];
   constructor(public articlesService: ArticlesService,
               @Inject('BaseURL') private BaseURL) { }
@@ -15,6 +17,10 @@ export class ArticlesComponent implements OnInit {
   ngOnInit() {
     this.articlesService.getArticles()
       .subscribe(articles => this.articles = articles);
+    // this.articlesService.getArticlesByCategory(this.onCategoryName).subscribe( data => {
+    //   console.log(data);
+    // });
   }
+
 
 }
