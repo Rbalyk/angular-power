@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../shared/article';
-import { Observable, of } from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
@@ -12,8 +12,9 @@ export class ArticlesService {
 
   constructor(private http: HttpClient) { }
 
-  categoryName: string;
-
+  getArticlesByCategory(categoryName: string): Observable<Article[]> {
+    return this.http.get<Article[]>(baseURL + 'articles/?categoryName=' + categoryName);
+  }
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(baseURL + 'articles').pipe(delay(1000));
   }
@@ -28,9 +29,7 @@ export class ArticlesService {
     );
   }
 
-  getArticlesByCategory(categoryName: string): Observable<Article[]> {
-    return this.http.get<Article[]>(baseURL + 'articles/?categoryName=' + categoryName);
-  }
+
 
   putArticleComment(article: Article): Observable<Article> {
     const httpOptions = {
