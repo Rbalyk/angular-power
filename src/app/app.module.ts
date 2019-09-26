@@ -5,7 +5,7 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
-import { HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SearchService } from './services/search.service';
 import { baseURL } from './shared/baseurl';
 import 'hammerjs';
@@ -22,7 +22,9 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { HomeComponent } from './components/home/home.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { SkillTestComponent } from './components/skill-test/skill-test.component';
-
+import { AlertComponent } from './components/alert/alert.component';
+import { ErrorInterceptor } from './interseptors/error.interceptor';
+import { JwtInterceptor } from './interseptors/jwt.interceptor';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { SkillTestComponent } from './components/skill-test/skill-test.component
     ArticlesComponent,
     HomeComponent,
     ArticleDetailComponent,
-    SkillTestComponent
+    SkillTestComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,9 @@ import { SkillTestComponent } from './components/skill-test/skill-test.component
   ],
   providers: [
     SearchService,
-    {provide: 'BaseURL', useValue: baseURL}],
+    {provide: 'BaseURL', useValue: baseURL},
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   entryComponents: [
     AuthenticationComponent
   ],
