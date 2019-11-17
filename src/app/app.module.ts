@@ -22,7 +22,6 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { HomeComponent } from './components/home/home.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { SkillTestComponent } from './components/skill-test/skill-test.component';
-import { AlertComponent } from './components/alert/alert.component';
 import { ErrorInterceptor } from './interseptors/error.interceptor';
 import { JwtInterceptor } from './interseptors/jwt.interceptor';
 
@@ -39,8 +38,7 @@ import { JwtInterceptor } from './interseptors/jwt.interceptor';
     ArticlesComponent,
     HomeComponent,
     ArticleDetailComponent,
-    SkillTestComponent,
-    AlertComponent
+    SkillTestComponent
   ],
   imports: [
     BrowserModule,
