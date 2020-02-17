@@ -14,43 +14,52 @@
     background: #ffffff;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     border-radius: 15px;
+    @include scroll();
   }
   form {
     min-width: 100%;
     width: 100%;
-    h4{
+    h5{
       margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
-
-    mat-form-field {
-      width: 100%;
-      max-width:530px;
-      ::ng-deep {
-        .mat-form-field-wrapper {
-          padding: 0;
-        }
-        label.search-label{
-          position: relative;
-          .spinner{
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            right: 20px;
-            top: -17px;
-            mat-spinner{
-              width: 20px !important;
-              height: 20px !important;
-              ::ng-deep{
-                svg{
-                  width: 20px !important;
-                  height: 20px !important;
-                }
-              }
-            }
-          }
+    label{
+      width: 500px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      input{
+        padding: 12px 30px;
+        border: 1px solid #dfe1e5;
+        border-radius: 24px;
+        background: $white;
+        width: 100%;
+        font-size: 16px;
+        transition: all ease 0.3s;
+        &:hover,&:focus{
+          box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+          border-color: rgba(223,225,229,0);
         }
       }
+      span{
+        position: absolute;
+        right: 5px;
+        top: 12px;
+        width: 20px;
+        height: 20px;
+        mat-spinner{
+          width: 100% !important;
+          height: 100% !important;
+          svg{
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
 
+      }
     }
   }
 

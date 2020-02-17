@@ -9,7 +9,7 @@ import { User } from '../../../shared/user';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  // tslint:disable-next-line:no-output-on-prefix
+
   @Output() onSubmitted = new EventEmitter<boolean>();
   formGroupSignUp: FormGroup;
   user: User;
@@ -19,11 +19,10 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.createForm();
+    this.initForm();
   }
 
-  createForm() {
-    // tslint:disable-next-line:max-line-length
+  initForm() {
     const emailRegex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.formGroupSignUp = this.formBuilder.group({
       name: [null, Validators.required],

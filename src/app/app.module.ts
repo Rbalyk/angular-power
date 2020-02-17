@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './services/search.service';
+import { ParticlesModule } from 'angular-particle';
 import { baseURL } from './shared/baseurl';
 import 'hammerjs';
 
@@ -36,7 +37,7 @@ import { SkillTestComponent } from './components/skill-test/skill-test.component
     ArticlesComponent,
     HomeComponent,
     ArticleDetailComponent,
-    SkillTestComponent
+    SkillTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,8 @@ import { SkillTestComponent } from './components/skill-test/skill-test.component
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ParticlesModule,
   ],
   providers: [
     SearchService,

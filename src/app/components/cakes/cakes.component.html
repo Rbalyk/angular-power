@@ -1,18 +1,16 @@
 <section class="search-section">
-  <h1>Different intresting features,plugins and books</h1>
   <form>
-    <h4>more than 3000 javascript / css plugins in CDN:</h4>
-    <mat-form-field>
-      <label class="search-label" for="search">
-        <input matInput id='search' type="search"
-               class="form-control"
-               [formControl]="searchField">
-        <span class='spinner' *ngIf="loading"><mat-spinner></mat-spinner></span>
-      </label>
-    </mat-form-field>
+    <h5>more than 3000 javascript / css plugins in CDN:</h5>
+    <label for="search" class="search-label">
+      <input matInput id='search' type="search"
+             class="form-control"
+             [formControl]="searchCake">
+      <span class='spinner' *ngIf="loading"><mat-spinner></mat-spinner></span>
+    </label>
   </form>
-   <mat-list *ngIf="showSearchResult">
-     <mat-list-item  *ngFor="let result of searchResult">
+
+   <mat-list *ngIf="isSearchCakeResult">
+     <mat-list-item  *ngFor="let result of searchCakeResult">
        <p matLine>{{result.name}}</p>
        <a matLine target="_blank" href="{{result.latest}}">{{result.latest}}</a>
      </mat-list-item>

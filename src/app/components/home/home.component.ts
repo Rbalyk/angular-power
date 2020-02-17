@@ -8,16 +8,8 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  inputValue: string;
-
   constructor() {}
 
   ngOnInit() {}
-
-  onChange(event) {
-    this.inputValue = event.target.value;
-    console.log(event);
-  }
-
 
 }

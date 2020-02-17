@@ -11,34 +11,36 @@ import { catchError, distinctUntilChanged, switchMap, filter, debounceTime, tap 
   encapsulation: ViewEncapsulation.None
 })
 export class CakesComponent implements OnInit, OnDestroy {
-  searchField: FormControl;
+
+  searchCake: FormControl;
   loading = false;
-  showSearchResult = false;
-  searchResult: any[];
+  isSearchCakeResult = false;
+  searchCakeResult: any[];
+
   private subscription: Subscription;
   constructor(public searchService: SearchService) { }
 
   ngOnInit() {
-    this.searchField = new FormControl();
-    this.subscription = this.searchField.valueChanges.pipe(
+    this.searchCake = new FormControl();
+    this.subscription = this.searchCake.valueChanges.pipe(
       tap(_ => (this.loading = true)),
       debounceTime(1200),
       distinctUntilChanged(),
       tap(() => {
-        this.searchResult = [];
+        this.searchCakeResult = [];
         this.loading = false;
-        this.showSearchResult = false;
+        this.isSearchCakeResult = false;
       }),
       filter(text => text.trim()),
       switchMap(text => this.searchService.search(text).pipe(
         catchError(err => EMPTY)
       )),
       tap(() => {
-        this.showSearchResult = true;
+        this.isSearchCakeResult = true;
       }),
       tap(_ => (this.loading = false)),
     ).subscribe((data) => {
-      this.searchResult = data['results'];
+      this.searchCakeResult = data['results'];
     });
   }
 

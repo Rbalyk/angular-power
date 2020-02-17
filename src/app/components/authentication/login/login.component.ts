@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../../shared/user';
 
 @Component({
@@ -16,16 +16,13 @@ export class LoginComponent implements OnInit {
   hide = true;
   titleAlert = 'Поле обовязкове';
 
-
-  // tslint:disable-next-line:no-output-on-prefix
   @Output() onSubmitted = new EventEmitter<boolean>();
 
   ngOnInit() {
-    this.createForm();
+    this.initForm();
   }
 
-  createForm() {
-    // tslint:disable-next-line:max-line-length
+  initForm() {
     const emailRegex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.formGroupSignIn = this.formBuilder.group({
       email: [null, [Validators.required, Validators.pattern(emailRegex)]],
